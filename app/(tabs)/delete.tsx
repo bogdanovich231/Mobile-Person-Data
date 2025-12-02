@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { View, Text, FlatList, Button, StyleSheet, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BackButton from "@/components/BackButton";
+import { useFocusEffect } from "expo-router";
 
 export default function DeletePerson() {
   const [people, setPeople] = useState([]);
@@ -15,9 +16,11 @@ export default function DeletePerson() {
     }
   };
 
-  useEffect(() => {
-    loadPeople();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      loadPeople();
+    }, [])
+  );
 
   const handleDelete = async (index) => {
     const updated = [...people];
@@ -56,7 +59,12 @@ export default function DeletePerson() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, marginTop: 50 },
+  container: {
+    flex: 1,
+    padding: 20,
+    marginTop: 50,
+    backgroundColor: "#f0f4f7",
+  },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
   item: {
     borderWidth: 1,

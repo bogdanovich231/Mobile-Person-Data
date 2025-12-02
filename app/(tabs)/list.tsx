@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BackButton from "@/components/BackButton";
+import { useFocusEffect } from "expo-router";
 
 export default function ListPeople() {
   const [people, setPeople] = useState([]);
@@ -15,9 +16,11 @@ export default function ListPeople() {
     }
   };
 
-  useEffect(() => {
-    loadPeople();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      loadPeople();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
@@ -48,7 +51,12 @@ export default function ListPeople() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, marginTop: 50 },
+  container: {
+    flex: 1,
+    padding: 20,
+    marginTop: 50,
+    backgroundColor: "#f0f4f7",
+  },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
   item: {
     borderWidth: 1,
