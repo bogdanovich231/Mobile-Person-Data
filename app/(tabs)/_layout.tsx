@@ -21,33 +21,38 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: () => <Entypo name="home" size={24} color="black" />,
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="home" size={size} color={color} />
+          ),
         }}
       />
+
       <Tabs.Screen
         name="list"
         options={{
           title: "List",
-          tabBarIcon: () => (
-            <FontAwesome name="th-list" size={24} color="black" />
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="th-list" size={size} color={color} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="add"
         options={{
           title: "Add person",
-          tabBarIcon: () => (
-            <Ionicons name="person-add-sharp" size={24} color="black" />
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-add-sharp" size={size} color={color} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="delete"
         options={{
           title: "Delete person",
-          tabBarIcon: () => (
-            <AntDesign name="user-delete" size={24} color="black" />
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="user-delete" size={size} color={color} />
           ),
         }}
       />

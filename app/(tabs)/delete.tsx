@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Text, FlatList, Button, StyleSheet, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import BackButton from "@/components/BackButton";
 
 export default function DeletePerson() {
   const [people, setPeople] = useState([]);
@@ -28,6 +29,7 @@ export default function DeletePerson() {
 
   return (
     <View style={styles.container}>
+      <BackButton />
       <Text style={styles.title}>Delete People</Text>
       {people.length === 0 ? (
         <Text>No people to delete</Text>

@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import BackButton from "@/components/BackButton";
 
 export default function AddPerson() {
   const [firstName, setFirstName] = useState("");
@@ -63,6 +64,7 @@ export default function AddPerson() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <ScrollView contentContainerStyle={styles.container}>
+        <BackButton />
         <Text style={styles.title}>Add New Person</Text>
 
         <TextInput

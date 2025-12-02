@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import BackButton from "@/components/BackButton";
 
 export default function ListPeople() {
   const [people, setPeople] = useState([]);
@@ -20,6 +21,7 @@ export default function ListPeople() {
 
   return (
     <View style={styles.container}>
+      <BackButton />
       <Text style={styles.title}>People List</Text>
       {people.length === 0 ? (
         <Text>No people added yet</Text>
