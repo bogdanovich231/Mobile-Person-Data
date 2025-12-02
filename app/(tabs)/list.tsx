@@ -46,7 +46,7 @@ export default function ListPeople() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
+  container: { flex: 1, padding: 20, marginTop: 50 },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
   item: {
     borderWidth: 1,

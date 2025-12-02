@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
     backgroundColor: "#f0f4f7",
     alignItems: "center",
+    marginTop: 50,
   },
   title: {
     fontSize: 28,
