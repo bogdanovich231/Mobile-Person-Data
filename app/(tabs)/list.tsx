@@ -3,9 +3,11 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BackButton from "@/components/BackButton";
 import { useFocusEffect } from "expo-router";
+import { useLanguage } from "@/hooks/i18n";
 
 export default function ListPeople() {
   const [people, setPeople] = useState([]);
+  const { t } = useLanguage();
 
   const loadPeople = async () => {
     try {
@@ -19,15 +21,15 @@ export default function ListPeople() {
   useFocusEffect(
     useCallback(() => {
       loadPeople();
-    }, [])
+    }, []),
   );
 
   return (
     <View style={styles.container}>
       <BackButton />
-      <Text style={styles.title}>People List</Text>
+      <Text style={styles.title}>{t.list}</Text>
       {people.length === 0 ? (
-        <Text>No people added yet</Text>
+        <Text>{t.noPeople}</Text>
       ) : (
         <FlatList
           data={people}

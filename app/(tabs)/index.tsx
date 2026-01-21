@@ -18,21 +18,21 @@ export default function HomeScreen() {
         style={[styles.button, { backgroundColor: "#3498db" }]}
         onPress={() => router.push("/(tabs)/add")}
       >
-        <Text style={styles.buttonText}>Add Person</Text>
+        <Text style={styles.buttonText}>{t.add}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#2ecc71" }]}
         onPress={() => router.push("/(tabs)/list")}
       >
-        <Text style={styles.buttonText}>Show List</Text>
+        <Text style={styles.buttonText}>{t.list}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#e74c3c" }]}
         onPress={() => router.push("/(tabs)/delete")}
       >
-        <Text style={styles.buttonText}>Delete Person</Text>
+        <Text style={styles.buttonText}>{t.delete}</Text>
       </TouchableOpacity>
     </View>
   );

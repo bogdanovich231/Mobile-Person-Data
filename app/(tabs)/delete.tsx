@@ -3,9 +3,11 @@ import { View, Text, FlatList, Button, StyleSheet, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import BackButton from "@/components/BackButton";
 import { useFocusEffect } from "expo-router";
+import { useLanguage } from "@/hooks/i18n";
 
 export default function DeletePerson() {
   const [people, setPeople] = useState([]);
+  const { t } = useLanguage();
 
   const loadPeople = async () => {
     try {
@@ -19,7 +21,7 @@ export default function DeletePerson() {
   useFocusEffect(
     useCallback(() => {
       loadPeople();
-    }, [])
+    }, []),
   );
 
   const handleDelete = async (index) => {
@@ -33,9 +35,9 @@ export default function DeletePerson() {
   return (
     <View style={styles.container}>
       <BackButton />
-      <Text style={styles.title}>Delete People</Text>
+      <Text style={styles.title}>{t.delete}</Text>
       {people.length === 0 ? (
-        <Text>No people to delete</Text>
+        <Text>{t.noPeople}</Text>
       ) : (
         <FlatList
           data={people}
@@ -46,7 +48,7 @@ export default function DeletePerson() {
                 {item.firstName} {item.lastName}
               </Text>
               <Button
-                title="Delete"
+                title={t.delete}
                 onPress={() => handleDelete(index)}
                 color="#e74c3c"
               />

@@ -12,6 +12,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BackButton from "@/components/BackButton";
+import { useLanguage } from "@/hooks/i18n";
 
 export default function AddPerson() {
   const [firstName, setFirstName] = useState("");
@@ -21,6 +22,7 @@ export default function AddPerson() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+  const { t } = useLanguage();
 
   const handleSave = async () => {
     if (!firstName || !lastName) {
@@ -65,18 +67,18 @@ export default function AddPerson() {
     >
       <ScrollView contentContainerStyle={styles.container}>
         <BackButton />
-        <Text style={styles.title}>Add New Person</Text>
+        <Text style={styles.title}>{t.add}</Text>
 
         <TextInput
           style={styles.input}
-          placeholder="First name"
+          placeholder={t.firstName}
           placeholderTextColor="#9b59b6"
           value={firstName}
           onChangeText={setFirstName}
         />
         <TextInput
           style={styles.input}
-          placeholder="Last name"
+          placeholder={t.lastName}
           placeholderTextColor="#9b59b6"
           value={lastName}
           onChangeText={setLastName}
@@ -84,7 +86,7 @@ export default function AddPerson() {
 
         <TouchableOpacity style={styles.input} onPress={showDatePicker}>
           <Text style={{ color: birthDate ? "#000" : "#9b59b6", fontSize: 16 }}>
-            {birthDate || "Birth date"}
+            {birthDate || t.birthDate}
           </Text>
         </TouchableOpacity>
 
@@ -97,7 +99,7 @@ export default function AddPerson() {
 
         <TextInput
           style={styles.input}
-          placeholder="Phone"
+          placeholder={t.phone}
           placeholderTextColor="#9b59b6"
           value={phone}
           onChangeText={setPhone}
@@ -105,7 +107,7 @@ export default function AddPerson() {
         />
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder={t.email}
           placeholderTextColor="#9b59b6"
           value={email}
           onChangeText={setEmail}
@@ -113,14 +115,14 @@ export default function AddPerson() {
         />
         <TextInput
           style={styles.input}
-          placeholder="Address"
+          placeholder={t.address}
           placeholderTextColor="#9b59b6"
           value={address}
           onChangeText={setAddress}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleSave}>
-          <Text style={styles.buttonText}>Save Person</Text>
+          <Text style={styles.buttonText}>{t.save}</Text>
         </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
