@@ -1,10 +1,19 @@
+import { useLanguage } from "@/hooks/i18n";
 import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function HomeScreen() {
+  const { lang, setLang, t } = useLanguage();
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "#dbc234" }]}
+        onPress={() => setLang(lang === "en" ? "pl" : "en")}
+      >
+        <Text style={styles.buttonText}>Language: {lang.toUpperCase()}</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#3498db" }]}
         onPress={() => router.push("/(tabs)/add")}
